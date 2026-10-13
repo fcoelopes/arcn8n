@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup diario do n8n as 03h de Fortaleza
+
+[Timer]
+OnCalendar=*-*-* 03:00:00 America/Fortaleza
+Persistent=true
+Unit=n8n-backup.service
+
+[Install]
+WantedBy=timers.target
