@@ -1,0 +1,12 @@
+[Unit]
+Description=Backup do n8n para Cloudflare R2
+Wants=docker.service network-online.target
+After=docker.service network-online.target
+
+[Service]
+Type=oneshot
+User=fcoedls
+Group=fcoedls
+WorkingDirectory=/home/fcoedls/services/n8n
+ExecStart=/home/fcoedls/scripts/backup-n8n.sh
+TimeoutStartSec=30min
