@@ -1,0 +1,11 @@
+[Unit]
+Description=Simulacao semanal de retencao do Restic para n8n
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=fcoedls
+Group=fcoedls
+ExecStart=/home/fcoedls/scripts/retention-n8n.sh
+TimeoutStartSec=30min
