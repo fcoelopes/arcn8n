@@ -1,0 +1,10 @@
+[Unit]
+Description=Simulacao semanal de retencao do n8n
+
+[Timer]
+OnCalendar=Sun *-*-* 04:00:00 America/Fortaleza
+Persistent=true
+Unit=n8n-retention.service
+
+[Install]
+WantedBy=timers.target
