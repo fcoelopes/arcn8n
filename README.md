@@ -6,7 +6,7 @@ Infraestrutura reproduzível do **n8n** em VPS, usando Docker Compose, PostgreSQ
 
 ## Componentes
 
-- n8n `2.41.3` — interface web em `https://n8n.arc.tec.br`.
+- n8n `2.43.4` (versão proposta no template; confirmar versão instalada na VPS) — interface web em `https://n8n.arc.tec.br`.
 - PostgreSQL `16-alpine` — banco dedicado ao n8n, isolado da rede pública.
 - Traefik existente — rede externa Docker `proxy`, entrypoint `websecure`, resolver `letsencrypt`.
 - Restic + Cloudflare R2 — dumps PostgreSQL e arquivos persistentes criptografados.
