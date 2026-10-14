@@ -47,7 +47,7 @@ Serviços oneshot aparecem como `inactive (dead)` depois de concluídos normalme
 
 ## Atualizações controladas
 
-O arquivo `renovate.json` configura propostas de atualização por Pull Request (sem automerge), com janela semanal e espera mínima para versões novas do n8n. É necessário instalar/habilitar o Renovate GitHub App para que a configuração seja executada; o JSON sozinho não agenda verificações.
+O arquivo `.github/dependabot.yml` usa o Dependabot nativo do GitHub para verificar atualizações do Docker Compose semanalmente às segundas, 08h (America/Fortaleza). Ele propõe Pull Requests, com limite de três PRs abertos, sem automerge nem deploy automático. Atualizações semver-major do `n8nio/n8n` ficam ignoradas para exigir análise manual. Revisar changelog e realizar backup antes de aprovar uma atualização. Dependabot deve estar habilitado nas configurações do repositório para gerar PRs.
 
 Antes de atualizar a VPS:
 
