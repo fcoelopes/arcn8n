@@ -1,0 +1,42 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "dependencyDashboard": true,
+  "schedule": [
+    "before 9am on monday"
+  ],
+  "timezone": "America/Fortaleza",
+  "prConcurrentLimit": 3,
+  "automerge": false,
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "n8nio/n8n"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "enabled": false,
+      "description": "Major upgrades require manual planning and testing"
+    },
+    {
+      "matchPackageNames": [
+        "n8nio/n8n"
+      ],
+      "minimumReleaseAge": "3 days",
+      "description": "Allow stabilization before proposing n8n upgrades"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "groupName": "Docker runtime updates"
+    }
+  ]
+}
