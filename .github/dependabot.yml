@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: "docker-compose"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "America/Fortaleza"
+    open-pull-requests-limit: 3
+    ignore:
+      - dependency-name: "n8nio/n8n"
+        update-types:
+          - "version-update:semver-major"
+    labels:
+      - "dependencies"
