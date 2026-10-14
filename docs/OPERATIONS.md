@@ -45,6 +45,30 @@ sudo systemctl start n8n-retention.service
 ```
 Serviços oneshot aparecem como `inactive (dead)` depois de concluídos normalmente; verificar `status=0/SUCCESS`.
 
+## Atualizações controladas
+
+O arquivo `renovate.json` configura propostas de atualização por Pull Request (sem automerge), com janela semanal e espera mínima para versões novas do n8n. É necessário instalar/habilitar o Renovate GitHub App para que a configuração seja executada; o JSON sozinho não agenda verificações.
+
+Antes de atualizar a VPS:
+
+```bash
+cd ~/services/n8n
+sudo systemctl start n8n-backup.service
+sudo systemctl status n8n-backup.service --no-pager
+```
+
+Confirme `status=0/SUCCESS` e o snapshot remoto, então altere apenas a versão do n8n no Compose de produção (não copie cegamente o modelo do GitHub sobre o arquivo local com alterações), valide e recrie o serviço:
+
+```bash
+docker compose config --quiet
+docker compose pull n8n
+docker compose up -d --no-deps n8n
+docker compose ps
+docker compose logs --tail=50 n8n
+```
+
+Migrações de banco podem impedir rollback apenas trocando a imagem; uma recuperação completa pode exigir restaurar banco e configurações do snapshot pré-atualização. Confira as breaking changes da versão antes de implantar. Recomendado validar editor, credenciais e execuções após atualizar.
+
 ## Pendências
 - Confirmar proteção adicional do editor do n8n sem impedir webhooks.
 - Testar inicialização completa do n8n a partir de backup.
